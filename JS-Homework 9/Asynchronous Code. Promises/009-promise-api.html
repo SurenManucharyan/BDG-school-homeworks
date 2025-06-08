@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise API</title>
+  </head>
+
+  <body>
+    <button id="all">all</button>
+    <button id="race">race</button>
+    <button id="allSettled">allSettled</button>
+
+    <script>
+      function asyncOperation() {
+        return new Promise(function (resolve, reject) {
+          let randomValue = Math.floor(Math.random() * 5001);
+
+          if (randomValue > 1000) {
+            // transfer the promise to the resolved state after a delay
+            setTimeout(() => resolve(randomValue), randomValue);
+          } else {
+            // if the random value is less than 1000, we throw an error
+            setTimeout(
+              () =>
+                reject(new Error(`Error. ${randomValue} is less than 1000.`)),
+              randomValue
+            );
+          }
+        });
+      }
+
+      let buttonAll = document.querySelector("#all");
+      let buttonRace = document.querySelector("#race");
+      let buttonAllSettled = document.querySelector("#allSettled");
+
+      buttonAll.addEventListener("click", function () {
+        let promises = [asyncOperation(), asyncOperation(), asyncOperation()];
+
+        // wait for all promises to complete
+        Promise.all(promises)
+          .then((resultArray) => console.log(resultArray))
+          .catch((error) => console.log(error.message));
+      });
+
+      buttonRace.addEventListener("click", function () {
+        let promises = [asyncOperation(), asyncOperation(), asyncOperation()];
+
+        // We are waiting for the first promise to complete. Once one of the promises completes, the others are ignored.
+        Promise.race(promises).then((result) => console.log(result));
+      });
+
+      buttonAllSettled.addEventListener("click", function () {
+        let promises = [asyncOperation(), asyncOperation(), asyncOperation()];
+
+        // new feature
+        // waits for completion of all promises and returns an array with information about which promises completed their work with what result
+        // as well as the value of each promise
+        Promise.allSettled(promises).then((result) => console.log(result));
+      });
+    </script>
+  </body>
+</html>

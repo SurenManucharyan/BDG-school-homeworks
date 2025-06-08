@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The problem with using callback functions</title>
+  </head>
+
+  <body>
+    <button>Download</button>
+    <br />
+    <br />
+    <script>
+      document.querySelector("button").addEventListener("click", function () {
+        let url1 =
+          "https://images-assets.nasa.gov/image/PIA16239/PIA16239~orig.jpg";
+        let url2 =
+          "https://images-assets.nasa.gov/image/PIA22312/PIA22312~orig.jpg";
+        let url3 =
+          "https://images-assets.nasa.gov/image/PIA04591/PIA04591~orig.jpg";
+
+        // using the callback function becomes inconvenient when nesting appears and it is necessary to call
+        // from a callback function of another function that requires a callback function as a parameter.
+        // This code structure appears when one asynchronous operation must run after another
+        // asynchronous operation (having completed downloading the first image, we proceed to download the second image, having downloaded
+        // second - download the third, etc.)
+        downloadImage(
+          url1,
+          function (image) {
+            document.body.append(image);
+
+            downloadImage(
+              url2,
+              function (image) {
+                document.body.append(image);
+
+                downloadImage(
+                  url3,
+                  function (image) {
+                    document.body.append(image);
+                  },
+                  function (err) {
+                    console.log(err);
+                  }
+                );
+              },
+              function (err) {
+                console.log(err);
+              }
+            );
+          },
+          function (err) {
+            console.log(err);
+          }
+        );
+
+        function downloadImage(url, success, error) {
+          let image = new Image(500);
+          image.src = url;
+
+          image.onload = function () {
+            if (success && typeof success == "function") success(image);
+          };
+
+          image.onerror = function (e) {
+            if (error && typeof error == "function")
+              error(new Error("Failed to load image " + this.src));
+          };
+        }
+      });
+    </script>
+  </body>
+</html>

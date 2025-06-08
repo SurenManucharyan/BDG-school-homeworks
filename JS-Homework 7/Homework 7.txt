@@ -1,0 +1,35 @@
+1. Simple Timeout
+Create a function that logs "Hello after 2 seconds" using setTimeout.
+2. Simple Interval
+Create a function that logs "Ping!" every second using setInterval.
+3. Stop an Interval
+Start an interval that logs the current time every second.
+After 5 seconds, stop the interval using clearInterval.
+4. Countdown Timer
+Write a function that counts down from 5 to 0 using setTimeout, 
+logging each number every second.
+
+5.You are given an array of people. Each person has a name and a country. 
+Your job is to count how many people are from each country and return the result as an object.
+
+const people = [
+  { name: "Anna", country: "Germany" },
+  { name: "John", country: "USA" },
+  { name: "Maria", country: "Germany" },
+  { name: "Lee", country: "South Korea" },
+  { name: "Tom", country: "USA" },
+];
+
+Write a function countByCountry(people) that:
+
+Takes the array as input.
+
+Returns an object where each key is a country, 
+and the value is how many people are from that country.
+
+Expected Output-
+{
+  Germany: 2,
+  USA: 2,
+  "South Korea": 1
+}

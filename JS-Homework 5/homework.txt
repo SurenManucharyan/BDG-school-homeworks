@@ -1,0 +1,42 @@
+1.Create a Student class with the following:
+
+Properties:
+name (string)
+
+grades (array of numbers)
+
+Methods:
+addGrade(grade) - adds a number to the grades array
+
+averageGrade() - returns the average of the grades
+
+printGrades() - logs each grade to the console using forEach
+
+should works so
+const student1 = new Student('Alice');
+student1.addGrade(90);
+student1.addGrade(80);
+student1.printGrades(); // Should print each grade
+console.log(student1.averageGrade()); // Should print 85
+
+
+2.Create a TaskManager class.
+
+Properties:
+tasks (array of objects with title and completed)
+
+Methods:
+addTask(title) - adds a task with completed: false
+
+completeTask(title) - marks a task as completed
+
+getCompletedTasks() - returns an array of only completed tasks (use filter)
+
+printTasks() - logs all tasks using a loop
+
+const manager = new TaskManager();
+manager.addTask("Wash dishes");
+manager.addTask("Do homework");
+manager.completeTask("Wash dishes");
+console.log(manager.getCompletedTasks()); // Shows completed tasks
+manager.printTasks();

@@ -1,0 +1,50 @@
+Book (Base Class)
+Properties:
+
+title
+
+author
+
+Methods:
+
+describe() → logs: "Book: TITLE by AUTHOR"
+
+Static:
+
+count → number of Book instances created
+
+getCount() → returns total book count
+
+2. LibraryBook (extends Book)
+Additional property:
+
+libraryName
+
+Constructor:
+
+Accepts title, author, and libraryName
+
+Uses super() to call the Book constructor
+
+Override describe():
+
+First call super.describe()
+
+Then log: "Available at LIBRARY_NAME library."
+
+🔨 What You Must Do:
+Create 3 different LibraryBook objects with different data.
+
+Call .describe() on each.
+
+Print the total number of books created using Book.getCount().
+
+example output
+Book: The Hobbit by J.R.R. Tolkien
+Available at Central Library library.
+Book: 1984 by George Orwell
+Available at City Library library.
+Book: Dune by Frank Herbert
+Available at Desert Library library.
+Total books created: 3
+

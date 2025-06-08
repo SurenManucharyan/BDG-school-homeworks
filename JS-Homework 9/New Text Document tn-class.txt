@@ -1,0 +1,45 @@
+1.
+const people = [
+  { name: "Alice", age: 17 , salary: 400},
+  { name: "Bob", age: 22, salary: 500 },
+  { name: "Charlie", age: 16, salary: 1500 },
+  { name: "David", age: 30, salary: 600},
+];
+
+1.1 Given an array of people, return only those aged 18 or older, and return their names.
+1.2 Given an array of people, create function that take this array and return new array sorted by age.
+1.3 create function that take that array and return average salary
+1.4 create function that sum all salaries.
+
+
+
+2. create count down so count will decrease from given number to 0;
+ class Countdown {
+        constructor(seconds) {
+          this.seconds = seconds;
+          this.intervalId = null;
+        }
+
+        start() {
+
+//your code
+                  }
+
+        stop() {
+          your code
+        }
+      }
+
+      // const timer = new Countdown(5);
+      // timer.start();
+
+
+3. write Fibonacci number sequence calculate function 
+
+
+console.log(getFibonacci(0)); // 0
+console.log(getFibonacci(1)); // 1
+console.log(getFibonacci(5)); // 5
+console.log(getFibonacci(10)); // 55
+
+

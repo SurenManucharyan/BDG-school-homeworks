@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chain of promise objects</title>
+  </head>
+
+  <body>
+    <button>Download</button>
+    <br />
+    <br />
+    <script>
+      document.querySelector("button").addEventListener("click", function () {
+        let url1 =
+          "https://images-assets.nasa.gov/image/PIA16239/PIA16239~orig.jpg";
+        let url2 =
+          "https://images-assets.nasa.gov/image/PIA22312/PIA22312~orig.jpg";
+        let url3 =
+          "https://images-assets.nasa.gov/image/PIA04591/PIA04591~orig.jpg";
+
+        // chain of promises, the result of the first promise is passed to the then handler, where the second one is created
+        // the promise and its result are passed to the next then handler and so on down the chain.
+        // this avoids code nesting where one asynchronous operation must run after another.
+        downloadImage(url1) // we receive a promise
+          .then((image) => {
+            // specifies what to do when the promise enters the resolved state
+            document.body.append(image);
+            return downloadImage(url2); // execute a method that returns a promise
+          })
+          .then((image) => {
+            // the result of the previous promise is passed as a value
+            document.body.append(image);
+            return downloadImage(url3);
+          })
+          .then((image) => {
+            document.body.append(image);
+          })
+          .catch(() => {});
+      });
+
+      function downloadImage(url) {
+        let promise = new Promise(function (resolve, reject) {
+          let image = new Image(500);
+          image.src = url;
+
+          image.onload = function () {
+            resolve(image);
+          };
+
+          image.onerror = function (e) {
+            reject(new Error("Failed to load image " + this.src));
+          };
+        });
+
+        return promise;
+      }
+    </script>
+  </body>
+</html>
