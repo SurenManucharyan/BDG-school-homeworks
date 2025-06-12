@@ -1,0 +1,47 @@
+1.Remove Duplicates
+Write a function that removes duplicates from an array using Set.
+
+// Input: [1, 2, 2, 3, 4, 4]
+// Output: [1, 2, 3, 4]
+
+
+2.Check Common Items Between Two Sets
+Write a function that checks if two sets have any common items.
+
+const set1 = new Set([1, 2, 3]);
+const set2 = new Set([3, 4, 5]);
+// Output: true
+
+
+3.Count Unique Words
+Count how many unique words are in a sentence using Set.
+const sentence = "hello world hello JavaScript world";
+
+
+4.Word Frequency Counter
+Write a function that takes a string and returns a Map of word counts.
+// Input: "hi hi hello"
+// Output: Map { "hi" => 2, "hello" => 1 }
+User Role Management System
+Create a Map that assigns a role to each user.
+
+5.
+const userRoles = new Map();
+userRoles.set("Alice", "admin");
+userRoles.set("Bob", "editor");
+
+// Then write a function to check if a user is an admin.
+
+
+
+
+
+
+6. Get Users from API use async await
+Use fetch to get data from https://jsonplaceholder.typicode.com/users and log each user's name.
+
+Filter Posts by User
+Fetch posts from /posts, then filter and return only posts by userId = 1.
+
+Create a Reusable Fetch Function
+Write a function getJSON(url) that wraps fetch and returns parsed JSON or logs an error if it fails.

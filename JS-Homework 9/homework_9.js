@@ -41,39 +41,74 @@ function sumOfSalary(array) {
 }
 console.log(sumOfSalary(people));
 
-// console.log("Task 2 \n");
-// class Countdown {
-//   constructor(seconds) {
-//     this.seconds = seconds;
-//     this.intervalId = null;
-//   }
+console.log("Task 2 \n");
+class Countdown {
+  constructor(seconds) {
+    this.seconds = seconds;
+    this.intervalId = null;
+  }
 
-//   start() {
-//     let id = setInterval(() => {
-//       console.log(this.seconds);
-//       this.seconds--;
-//       if (this.seconds < 0) {
-//         clearInterval(id);
-//       }
-//     }, 1000);
-//   }
-// }
-// const timer = new Countdown(5);
-// timer.start();
+  start() {
+    this.intervalId = setInterval(() => {
+      console.log(this.seconds);
+      this.seconds--;
+      if (this.seconds < 0) {
+        this.stop();
+      }
+    }, 1000);
+  }
+
+  stop() {
+    clearInterval(this.intervalId);
+  }
+}
+const timer = new Countdown(5);
+timer.start();
 
 console.log("Task 3 \n");
 
 function getFibonacci(length) {
   let arr = [0, 1];
   if (length === 0) {
-    return "0";
+    return 0;
   }
   for (let i = 0; i < length; i++) {
     let sum = arr[arr.length - 1] + arr[arr.length - 2];
     arr.push(sum);
   }
-  return arr[length] + "";
+  return arr[length];
 }
+
+// Recursive Fibonacci
+// function recursiveFibonacci(n) {
+//   if (n === 0) {
+//     return 0;
+//   }
+//   if (n <= 2) {
+//     return 1;
+//   }
+//   return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2);
+// }
+
+// Loop Fibonacci
+
+// function loopFibonacci(n) {
+//   if (n === 0) {
+//     return 0;
+//   }
+//   if (n <= 2) {
+//     return 1;
+//   }
+
+//   let a = 0;
+//   let b = 1;
+//   for (let i = 2; i <= n; i++) {
+//     let sum = a + b;
+//     a = b;
+//     b = sum;
+//   }
+//   return b;
+// }
 
 console.log(getFibonacci(0)); // 0
 console.log(getFibonacci(1)); // 1
