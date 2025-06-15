@@ -25,21 +25,20 @@ console.log(set3.size);
 
 console.log("Task 4\n");
 
-const string = "hi hi hello";
-const arrayOfWords = string.split(" ");
-console.log(arrayOfWords);
-let map = new Map();
-let count = 1;
-arrayOfWords.forEach((el) => {
-  let count = 1;
-  if (!map.has(el)) {
-    map.set(el, count);
-  } else {
-    count = map.get(el);
-    map.set(el, ++count);
-  }
-});
-console.log(map);
+function f(string = "hi hi hello") {
+  const arrayOfWords = string.split(" ");
+  let map = new Map();
+  arrayOfWords.forEach((el) => {
+    if (!map.has(el)) {
+      map.set(el, 1);
+    } else {
+      let count = map.get(el);
+      map.set(el, ++count);
+    }
+  });
+  return map;
+}
+console.log(f());
 
 console.log("Task 5\n");
 
@@ -54,3 +53,37 @@ for (let elem of userRoles) {
     console.log(`${elem[0]} is simple user`);
   }
 }
+
+console.log("Task 6\n");
+
+let usersNames = null;
+async function usersName() {
+  try {
+    const result = await fetch(`https://jsonplaceholder.typicode.com/users`);
+    const usersData = await result.json();
+    usersNames = usersData.map((user) => user.name);
+    console.log(usersNames);
+  } catch (err) {
+    Promise.reject();
+  }
+}
+
+usersName();
+
+let userPosts = null;
+async function usersPosts(id) {
+  try {
+    const result = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+    const usersData = await result.json();
+    let userPosts = usersData.filter((user) => {
+      if (user.userId === id) {
+        return user;
+      }
+    });
+    console.log(userPosts);
+  } catch (err) {
+    Promise.reject();
+  }
+}
+
+usersPosts(1);

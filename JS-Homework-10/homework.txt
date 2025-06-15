@@ -22,10 +22,11 @@ const sentence = "hello world hello JavaScript world";
 Write a function that takes a string and returns a Map of word counts.
 // Input: "hi hi hello"
 // Output: Map { "hi" => 2, "hello" => 1 }
-User Role Management System
+
+
+5.User Role Management System
 Create a Map that assigns a role to each user.
 
-5.
 const userRoles = new Map();
 userRoles.set("Alice", "admin");
 userRoles.set("Bob", "editor");
@@ -33,15 +34,13 @@ userRoles.set("Bob", "editor");
 // Then write a function to check if a user is an admin.
 
 
-
-
-
-
 6. Get Users from API use async await
-Use fetch to get data from https://jsonplaceholder.typicode.com/users and log each user's name.
+Use fetch to get data from https://jsonplaceholder.typicode.com/users 
+and log each user's name.
 
 Filter Posts by User
 Fetch posts from /posts, then filter and return only posts by userId = 1.
 
 Create a Reusable Fetch Function
-Write a function getJSON(url) that wraps fetch and returns parsed JSON or logs an error if it fails.
+Write a function getJSON(url) that wraps fetch 
+and returns parsed JSON or logs an error if it fails.

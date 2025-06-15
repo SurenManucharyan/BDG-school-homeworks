@@ -1,0 +1,41 @@
+
+
+
+Part 1 – Fetch from 2 APIs
+Create an async function that:
+
+Fetches all countries from "https://restcountries.com/v3.1/all?fields=name,population,region"
+
+Fetches 10 cat facts from https://catfact.ninja/facts?limit=10
+
+Use Promise.all() to run both fetches in parallel.
+
+
+
+Part 2 – Data Manipulation
+After getting the data:
+Countries:
+Filter out only countries from Europe.
+
+Sort the countries by population (descending).
+
+Create a new array of objects with only:
+{
+  name: "France",
+  population: 67000000,
+  region: "Europe"
+}
+
+
+Cat Facts:
+Filter only facts longer than 50 characters.
+
+Count how many facts are over 100 characters long.
+
+Map them into this format:
+{
+  fact: "Cats are awesome...",
+  length: 93
+}
+
+
